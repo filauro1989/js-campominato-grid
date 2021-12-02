@@ -8,7 +8,6 @@ gioca.addEventListener('click', function(){
 
     let difficolta = document.getElementById('mode-selection').value;
     container.innerHTML = '';
-    let square = document.createElement('div');
     let row = 0;
     let col = 0;
     let blacklist = [];
@@ -28,6 +27,14 @@ gioca.addEventListener('click', function(){
 
     }
 
+    for (let index = 0; index < 10; index++) {
+        
+        randomNumber = parseInt(Math.floor(Math.random() * (row * col)) + 1);
+        blacklist.push(randomNumber);
+        console.log(blacklist);
+
+    }
+
     for (let index = 0; index < (row * col); index++) {
             
         let square = document.createElement('div');
@@ -38,17 +45,18 @@ gioca.addEventListener('click', function(){
         square.append([index + 1]);
 
         square.addEventListener('click', function(){
-            square.classList.add('active-red');
+    
+            if (blacklist.includes(index + 1)){
+                this.classList.add('active-red');
+                // square.removeEventListener('click', function(){
+                // });
+            } else {
+                this.classList.add('active-blue');
+            }
+            
         });
-
-    }
-
-    for (let index = 0; index < 10; index++) {
         
-        randomNumber = parseInt(Math.floor(Math.random() * 100) + 1);
-        blacklist.push(randomNumber);
-        console.log(blacklist);
-
     }
+    
 
 });
