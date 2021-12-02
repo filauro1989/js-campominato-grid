@@ -11,6 +11,8 @@ gioca.addEventListener('click', function(){
     let square = document.createElement('div');
     let row = 0;
     let col = 0;
+    let blacklist = [];
+    let randomNumber = 0;
 
     if (difficolta == 'easy') {
         row = 10;
@@ -40,4 +42,13 @@ gioca.addEventListener('click', function(){
         });
 
     }
+
+    for (let index = 0; index < 10; index++) {
+        
+        randomNumber = parseInt(Math.floor(Math.random() * 100) + 1);
+        blacklist.push(randomNumber);
+        console.log(blacklist);
+
+    }
+
 });
