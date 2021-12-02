@@ -27,13 +27,19 @@ gioca.addEventListener('click', function(){
 
     }
 
-    for (let index = 0; index < 10; index++) {
-        
+    // for (let index = 0; index < 16; index++) {
+    i = 0;
+    while (i < 16){
         randomNumber = parseInt(Math.floor(Math.random() * (row * col)) + 1);
-        blacklist.push(randomNumber);
-        console.log(blacklist);
-
+        if (blacklist.includes(randomNumber)) {
+            randomNumber = parseInt(Math.floor(Math.random() * (row * col)) + 1);
+            blacklist.push(randomNumber);
+        } else {
+            blacklist.push(randomNumber);
+        }
+        i++;
     }
+    console.log(blacklist);
 
     for (let index = 0; index < (row * col); index++) {
             
@@ -46,6 +52,7 @@ gioca.addEventListener('click', function(){
 
         square.addEventListener('click', function(){
     
+
             if (blacklist.includes(index + 1)){
                 this.classList.add('active-red');
                 // square.removeEventListener('click', function(){
@@ -58,5 +65,4 @@ gioca.addEventListener('click', function(){
         
     }
     
-
 });
